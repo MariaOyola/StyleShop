@@ -8,43 +8,13 @@ const icon2 = require('../assets/conjunto.png');
 const icon3 = require('../assets/vestido.png');
 const icon4 = require('../assets/gala.png');
 const icon5 = require('../assets/blusa2.png');
-export default function ProductCard({ navigation }) {
+export default function ProductCard({ imagen, nombre, precio }) {
     return (
         <View>
             <View style={style.card}>
-                <Image style={style.Image} source={icon} />
-                <Text style={style.productName}> Camisa crop unicolor </Text>
-                <Text style={style.productPrice}>60.000 $</Text>
-            </View>
-
-            <View style={style.card}>
-                <Image style={style.Image} source={icon1} />
-                <Text style={style.productName}> Falda lapiz </Text>
-                <Text style={style.productPrice}>80.000 $</Text>
-            </View>
-
-            <View style={style.card}>
-                <Image style={style.Image} source={icon2} />
-                <Text style={style.productName}> Conjunto de lana </Text>
-                <Text style={style.productPrice}>150.000 $</Text>
-            </View>
-
-            <View style={style.card}>
-                <Image style={style.Image} source={icon3} />
-                <Text style={style.productName}> Vestido de verano </Text>
-                <Text style={style.productPrice}>120.000 $</Text>
-            </View>
-
-            <View style={style.card}>
-                <Image style={style.Image} source={icon4} />
-                <Text style={style.productName}> Vestido de gala </Text>
-                <Text style={style.productPrice}>180.000 $</Text>
-            </View>
-
-            <View style={style.card}>
-                <Image style={style.Image} source={icon5} />
-                <Text style={style.productName}> Camisa crop unicolor </Text>
-                <Text style={style.productPrice}>60.000 $</Text>
+                <Image style={style.Image} source={imagen} />
+                <Text style={style.productName}> {nombre} </Text>
+                <Text style={style.productPrice}> {precio} </Text>
             </View>
         </View>
     )
@@ -52,18 +22,18 @@ export default function ProductCard({ navigation }) {
 const style = StyleSheet.create({
     card: {
         width: 150,  // Ancho de la tarjeta.
-        backgroundColor: '#FFFFFF',  // Fondo blanco.
-        borderRadius: 15, // Esquinas redondeadas.
+        backgroundColor: '#ffffff',  // Fondo blanco.
+        borderRadius: 20, // Esquinas redondeadas.
         padding: 10,  // Espacio interno.
          marginBottom: 20, // separacion entre tarjetas vertical.
 
-        shadowColor: '#000', // Sombra en iPhone.
+        shadowColor: '#000000', // Sombra en iPhone.
         shadowOffset: {
             width: 0,
             height: 2,
         },
-        shadowOpacity: 0.15,
-        shadowRadius: 4,
+        shadowOpacity: 2.25,
+        shadowRadius: 8,
 
         elevation: 5, // Sombra en Android.
     },
@@ -71,20 +41,20 @@ const style = StyleSheet.create({
     Image: {
         width: '100%', // La imagen ocupa todo el ancho de la tarjeta.
         height: 150,   // Altura de la imagen.
-        borderTopLeftRadius: 15, // Redondea solo las esquinas superiores,
-        borderTopRightRadius: 15,
+        borderTopLeftRadius: 20, // Redondea solo las esquinas superiores,
+        borderTopRightRadius: 20,
     },
 
     productName: {
         fontSize: 16,
         fontWeight: '600',
-        color: '#333',
+        color: '#000000',
         marginTop: 10,
     },
     productPrice: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#2563EB',
+        color: '#7A3E65',
         marginTop: 5,
     }
 });

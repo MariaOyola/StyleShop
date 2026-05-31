@@ -9,7 +9,7 @@ export default function LagePages({ navigation }) {
         setTimeout(() => {
             navigation.navigate('StyleShop');
         }, 5000);  // Tiempo de la  pagina Lage Page
-    }, [40]);
+    }, []);
 
     return (
         <View style={styles.container}>
