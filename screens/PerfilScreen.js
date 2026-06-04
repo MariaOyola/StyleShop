@@ -1,12 +1,12 @@
+// Importamos los componentes visuales que usa esta pantalla.
 import { Text, ScrollView, Image, StyleSheet, Button, Alert, View, Modal } from 'react-native';
 import React, { useState } from 'react';
 
-
 export default function PerfilScreen() {
-    // Estado para controlar si el modal está visible o no
+    // modalVisible controla si el Modal está abierto o cerrado.
     const [modalVisible, setModalVisible] = useState(false);
 
-    // Imagen de perfil fija para mostrar en la pantalla
+    // Icono de perfil que se muestra arriba del detalle.
     const icon = require('../assets/perfil.png');
 
     return (

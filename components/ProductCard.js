@@ -1,22 +1,14 @@
+// ProductCard es un componente reutilizable para mostrar un producto.
 import React from "react";
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { Text, StyleSheet, Image, Pressable } from 'react-native';
 
-
-const icon = require('../assets/blusa1.png');
-const icon1 = require('../assets/falda.png');
-const icon2 = require('../assets/conjunto.png');
-const icon3 = require('../assets/vestido.png');
-const icon4 = require('../assets/gala.png');
-const icon5 = require('../assets/blusa2.png');
-export default function ProductCard({ imagen, nombre, precio }) {
+export default function ProductCard({ imagen, nombre, precio, onPress }) {
     return (
-        <View>
-            <View style={style.card}>
-                <Image style={style.Image} source={imagen} />
-                <Text style={style.productName}> {nombre} </Text>
-                <Text style={style.productPrice}> {precio} </Text>
-            </View>
-        </View>
+        <Pressable onPress={onPress} style={style.card}>
+            <Image style={style.Image} source={imagen} />
+            <Text style={style.productName}>{nombre}</Text>
+            <Text style={style.productPrice}>{precio}</Text>
+        </Pressable>
     )
 }
 const style = StyleSheet.create({

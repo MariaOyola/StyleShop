@@ -1,7 +1,12 @@
+// React se importa para poder usar componentes y hooks.
 import React from 'react';
+// useState permite guardar datos que cambian con la interacción.
 import { useState } from "react";
+// useEffect permite ejecutar código cuando el componente se carga.
 import { useEffect } from "react";
-import { View, Text, StyleSheet, Button, ScrollView, ActivityIndicator } from 'react-native';
+// View, Text, StyleSheet y otros componentes visuales de React Native.
+import { View, Text, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
+// ProductCard es un componente que se usa para mostrar cada producto.
 import ProductCard from '../components/ProductCard';
 
 
@@ -20,11 +25,31 @@ export default function StyleShop({ navigation }) {
     const icon11 = require('../assets/elegante5.png');
     const icon12 = require('../assets/elegante6.png');
 
-    // validacion y estado
+    // Definimos los productos que se usan en esta pantalla.
+    const productosInicio = [
+        { id: 1, imagen: icon, nombre: 'Camisa crop unicolor', precio: '60.000 $' },
+        { id: 2, imagen: icon1, nombre: 'Blusa en copa', precio: '80.000 $' },
+        { id: 3, imagen: icon2, nombre: 'Conjunto de lana', precio: '150.000 $' },
+        { id: 4, imagen: icon3, nombre: 'Falda de verano', precio: '120.000 $' },
+        { id: 5, imagen: icon4, nombre: 'Vestido de gala', precio: '180.000 $' },
+        { id: 6, imagen: icon6, nombre: 'Vestido de verano', precio: '120.000 $' },
+    ];
+
+    const productosMas = [
+        { id: 7, imagen: icon7, nombre: 'Conjunto elegante', precio: '60.000 $' },
+        { id: 8, imagen: icon8, nombre: 'Vestido en lana', precio: '80.000 $' },
+        { id: 9, imagen: icon9, nombre: 'Conjunto para matrimonio', precio: '150.000 $' },
+        { id: 10, imagen: icon10, nombre: 'Conjunto de verano', precio: '120.000 $' },
+        { id: 11, imagen: icon11, nombre: 'Vestido de gala', precio: '180.000 $' },
+        { id: 12, imagen: icon12, nombre: 'Conjunto de verano', precio: '120.000 $' },
+    ];
+
+    // useState guarda si la primera parte de la pantalla sigue cargando.
     const [loading, setLoading] = useState(true);
+    // useState guarda si la segunda parte de los productos sigue cargando.
     const [loading1, setLoading1] = useState(true);
 
-    // efecto
+    // useEffect se ejecuta al montar la pantalla y simula la carga inicial.
     useEffect(() => {
         setTimeout(() => {
             setLoading(false);
@@ -47,6 +72,7 @@ export default function StyleShop({ navigation }) {
     }
     return (
         <View style={{ flex: 1, backgroundColor: '#F8F5FA' }}>
+            {/* ScrollView permite desplazar el contenido cuando es más largo que la pantalla. */}
             <ScrollView style={{ backgroundColor: '#F8F5FA' }} contentContainerStyle={style.container}>
 
                 <Text style={{ marginTop: 20, backgroundColor: '#7A3E65', paddingVertical: 15, paddingHorizontal: 25, borderRadius: 20, fontSize: 22, fontWeight: 'bold', color: '#fff', textAlign: 'center', marginHorizontal: 20, }}>Bienvenida a una nueva experiencia de estilo y calidad</Text>
@@ -57,27 +83,41 @@ export default function StyleShop({ navigation }) {
                 </View>
 
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 30, justifyContent: 'center', marginTop: -50 }}>
-                    <ProductCard imagen={icon} nombre="Camisa crop unicolor" precio="60.000 $" />
-                    <ProductCard imagen={icon1} nombre="Blusa en copa" precio="80.000 $" />
-                    <ProductCard imagen={icon2} nombre="Conjunto de lana" precio="150.000 $" />
-                    <ProductCard imagen={icon3} nombre="Falda de verano" precio="120.000 $" />
-                    <ProductCard imagen={icon4} nombre="Vestido de gala" precio="180.000 $" />
-                    <ProductCard imagen={icon6} nombre="Vestido de verano" precio="120.000 $" />
+                    {productosInicio.map((producto) => (
+                        <ProductCard
+                            key={producto.id}
+                            imagen={producto.imagen}
+                            nombre={producto.nombre}
+                            precio={producto.precio}
+                            onPress={() => navigation.navigate('Detail', {
+                                nombre: producto.nombre,
+                                precio: producto.precio,
+                                imagen: producto.imagen,
+                            })}
+                        />
+                    ))}
                 </View>
 
-                {loading1 ? (<View style={{ marginVertical: 20 }}>
-                    <ActivityIndicator size="large" color="#7A3E65" />
-
-                </View>) : (<View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 30, justifyContent: 'center' }}>
-                    <ProductCard imagen={icon7} nombre="Conjunto elegante" precio="60.000 $" />
-                    <ProductCard imagen={icon8} nombre="Vestido en lana" precio="80.000 $" />
-                    <ProductCard imagen={icon9} nombre="Conjunto para matrimonio" precio="150.000 $" />
-                    <ProductCard imagen={icon10} nombre="Conjunto de verano" precio="120.000 $" />
-                    <ProductCard imagen={icon11} nombre="Vestido de gala" precio="180.000 $" />
-                    <ProductCard imagen={icon12} nombre="Conjunto de verano" precio="120.000 $" />
-
-                </View>
-
+                {loading1 ? (
+                    <View style={{ marginVertical: 20 }}>
+                        <ActivityIndicator size="large" color="#7A3E65" />
+                    </View>
+                ) : (
+                    <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 30, justifyContent: 'center' }}>
+                        {productosMas.map((producto) => (
+                            <ProductCard
+                                key={producto.id}
+                                imagen={producto.imagen}
+                                nombre={producto.nombre}
+                                precio={producto.precio}
+                                onPress={() => navigation.navigate('Detail', {
+                                    nombre: producto.nombre,
+                                    precio: producto.precio,
+                                    imagen: producto.imagen,
+                                })}
+                            />
+                        ))}
+                    </View>
                 )}
 
             </ScrollView>
