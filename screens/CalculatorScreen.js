@@ -37,18 +37,10 @@ export default function CalculadoraScreen({ navigation }) {
 
         let res = 0;
         switch (operacion) {
-            case "suma":
-                res = can + pr;
-                break;
-            case "resta":
-                res = can - pr;
-                break;
-            case "multiplicar":
-                res = can * pr;
-                break;
-            case "dividir":
-                res = can / pr;
-                break;
+            case "suma":res = can + pr; break;
+            case "resta": res = can - pr; break;
+            case "multiplicar": res = can * pr;  break;
+            case "dividir": res = can / pr;  break;
             default:
                 return;
         }

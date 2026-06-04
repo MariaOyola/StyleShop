@@ -12,6 +12,7 @@ export default function DetailScreen({ route }) {
 
     const tallas = ['S', 'M', 'L', 'XL'];
 
+
     return (
         <View style={styles.page}>
             <ScrollView contentContainerStyle={styles.container}>
