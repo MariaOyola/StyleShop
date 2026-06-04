@@ -46,43 +46,42 @@ export default function StyleShop({ navigation }) {
         )
     }
     return (
-        <ScrollView style={{ backgroundColor: '#F8F5FA' }} contentContainerStyle={style.container}>
+        <View style={{ flex: 1, backgroundColor: '#F8F5FA' }}>
+            <ScrollView style={{ backgroundColor: '#F8F5FA' }} contentContainerStyle={style.container}>
 
-            <Text style={{ marginTop: 20, backgroundColor: '#7A3E65', paddingVertical: 15, paddingHorizontal: 25, borderRadius: 20, fontSize: 22, fontWeight: 'bold', color: '#fff', textAlign: 'center', marginHorizontal: 20, }}>Bienvenida a una nueva experiencia de estilo y calidad</Text>
-            <View style={{ flexDirection: 'row', gap: "20", marginTop: 50}}>
-                <Button title='Ver Carrito' color='#A2678A' onPress={() => navigation.navigate('ScrollScreen')} />
-                <Button title='Ver calculadora' color='#8E7AB5' onPress={() => navigation.navigate('CalculatorScreen')} />
-            </View>
+                <Text style={{ marginTop: 20, backgroundColor: '#7A3E65', paddingVertical: 15, paddingHorizontal: 25, borderRadius: 20, fontSize: 22, fontWeight: 'bold', color: '#fff', textAlign: 'center', marginHorizontal: 20, }}>Bienvenida a una nueva experiencia de estilo y calidad</Text>
+                <View style={{ flexDirection: 'row', gap: "20", marginTop: 50}}>
+                </View>
+                <View style={{ flexDirection: 'row', gap: "30" }}>
+                    <Text style={{ paddingVertical: 50, fontSize: 22, marginTop: -100, color: '#7A3E65',  fontWeight: '800' }}>Productos Destacados</Text>
+                </View>
 
-            <View style={{ flexDirection: 'row', gap: "30" }}>
-                <Text style={{ paddingVertical: 50, fontSize: 22, color: '#7A3E65', marginRight: 90, fontWeight: '800' }}>Productos Destacados</Text>
-            </View>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 30, justifyContent: 'center', marginTop: -50 }}>
+                    <ProductCard imagen={icon} nombre="Camisa crop unicolor" precio="60.000 $" />
+                    <ProductCard imagen={icon1} nombre="Blusa en copa" precio="80.000 $" />
+                    <ProductCard imagen={icon2} nombre="Conjunto de lana" precio="150.000 $" />
+                    <ProductCard imagen={icon3} nombre="Falda de verano" precio="120.000 $" />
+                    <ProductCard imagen={icon4} nombre="Vestido de gala" precio="180.000 $" />
+                    <ProductCard imagen={icon6} nombre="Vestido de verano" precio="120.000 $" />
+                </View>
 
-            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 30, justifyContent: 'center', marginTop: -50 }}>
-                <ProductCard imagen={icon} nombre="Camisa crop unicolor" precio="60.000 $" />
-                <ProductCard imagen={icon1} nombre="Blusa en copa" precio="80.000 $" />
-                <ProductCard imagen={icon2} nombre="Conjunto de lana" precio="150.000 $" />
-                <ProductCard imagen={icon3} nombre="Falda de verano" precio="120.000 $" />
-                <ProductCard imagen={icon4} nombre="Vestido de gala" precio="180.000 $" />
-                <ProductCard imagen={icon6} nombre="Vestido de verano" precio="120.000 $" />
-            </View>
+                {loading1 ? (<View style={{ marginVertical: 20 }}>
+                    <ActivityIndicator size="large" color="#7A3E65" />
 
-            {loading1 ? (<View style={{ marginVertical: 20 }}>
-                <ActivityIndicator size="large" color="#7A3E65" />
+                </View>) : (<View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 30, justifyContent: 'center' }}>
+                    <ProductCard imagen={icon7} nombre="Conjunto elegante" precio="60.000 $" />
+                    <ProductCard imagen={icon8} nombre="Vestido en lana" precio="80.000 $" />
+                    <ProductCard imagen={icon9} nombre="Conjunto para matrimonio" precio="150.000 $" />
+                    <ProductCard imagen={icon10} nombre="Conjunto de verano" precio="120.000 $" />
+                    <ProductCard imagen={icon11} nombre="Vestido de gala" precio="180.000 $" />
+                    <ProductCard imagen={icon12} nombre="Conjunto de verano" precio="120.000 $" />
 
-            </View>) : (<View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 30, justifyContent: 'center' }}>
-                <ProductCard imagen={icon7} nombre="Conjunto elegante" precio="60.000 $" />
-                <ProductCard imagen={icon8} nombre="Vestido en lana" precio="80.000 $" />
-                <ProductCard imagen={icon9} nombre="Conjunto para matrimonio" precio="150.000 $" />
-                <ProductCard imagen={icon10} nombre="Conjunto de verano" precio="120.000 $" />
-                <ProductCard imagen={icon11} nombre="Vestido de gala" precio="180.000 $" />
-                <ProductCard imagen={icon12} nombre="Conjunto de verano" precio="120.000 $" />
+                </View>
 
-            </View>
+                )}
 
-            )}
-
-        </ScrollView>
+            </ScrollView>
+        </View>
     )
 }
 const style = StyleSheet.create({

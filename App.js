@@ -1,10 +1,9 @@
+import React from 'react';
 import AppNavigation from './navigation/AppNavigation';
 
 export default function App() {
-  return <AppNavigation /> ;
+  return <AppNavigation />;
 }
-
-
 /*
 
 import { View, Text, Button, StyleSheet, Alert, Image } from 'react-native';

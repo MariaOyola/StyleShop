@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 
-export default function CalculadoraScreen() {
+export default function CalculadoraScreen({ navigation }) {
     const [cantidad, setCantidad] = useState("");
     const [precio, setPrecio] = useState("");
     const [resultado, setResultado] = useState(null);
@@ -50,8 +50,10 @@ export default function CalculadoraScreen() {
     };
 
     return (
+
+          <View style={{ flex: 1, backgroundColor: '#F8F5FA' }}>
         <View style={styles.container}>
-            <Text style={{ marginTop: -100, backgroundColor: '#7A3E65', paddingVertical: 15, paddingHorizontal: 25, borderRadius: 20, fontSize: 22, fontWeight: 'bold', color: '#fff', textAlign: 'center', marginHorizontal: 20, }}>Calcula tus prendas</Text>
+            <Text style={{ marginTop: -100, backgroundColor: '#7A3E65', paddingVertical: 15, paddingHorizontal: 25, borderRadius: 20, fontSize: 22, fontWeight: 'bold', color: '#fff', textAlign: 'center', marginHorizontal: 20, }}>Calculadora de Compras</Text>
             <TextInput style={styles.input} placeholder="Cantidad" value={cantidad} keyboardType="numeric" onChangeText={setCantidad} />
             <TextInput style={styles.input} placeholder="Precio" value={precio} keyboardType="numeric" onChangeText={setPrecio}
             />
@@ -78,7 +80,8 @@ export default function CalculadoraScreen() {
 
             {error ? <Text style={styles.error}>{error}</Text> : null}
             {resultado !== null ? <Text style={styles.result}>Resultado: {resultado}</Text> : null}
-        </View >
+            </View>
+        </View>
     );
 }
 

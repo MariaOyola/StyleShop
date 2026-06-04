@@ -7,7 +7,7 @@ export default function LagePages({ navigation }) {
 
     useEffect(() => {
         setTimeout(() => {
-            navigation.navigate('StyleShop');
+            navigation.navigate('MainTab');
         }, 5000);  // Tiempo de la  pagina Lage Page
     }, []);
 
