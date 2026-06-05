@@ -10,7 +10,9 @@ const Tab = createBottomTabNavigator();
 
 export default function TabNavigation() {
     return (
-        <Tab.Navigator>
+
+        // Oculta el encabezado (header) que React Navigation muestra por defecto en cada pantalla.
+        <Tab.Navigator screenOptions={{ headerShown: false }}>
             {/* Pestaña principal de la tienda. */}
             <Tab.Screen name="Inicio" component={StyleShop}
             />
@@ -18,7 +20,7 @@ export default function TabNavigation() {
             {/* Pestaña de perfil del usuario. */}
             <Tab.Screen name="Perfil" component={PerfilScreen}
             />
-            
+
             {/* Pestaña de configuración. */}
             <Tab.Screen name="Configuración" component={SettingsScreen}
             />
