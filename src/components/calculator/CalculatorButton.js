@@ -1,5 +1,4 @@
 // CalculatorButton es el botón que usan los 4 botones de la calculadora.
-// Envuelve AppButton para que CalculatorScreen no repita el View contenedor.
 
 import React from 'react';
 import { View, StyleSheet } from 'react-native';

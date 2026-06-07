@@ -1,5 +1,6 @@
 // HomeScreen es la pantalla principal de la tienda.
 // Antes se llamaba StyleShop, ahora tiene un nombre más descriptivo.
+// HomeScreen.js — Pantalla principal de la tienda
 
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
@@ -9,8 +10,11 @@ import { useScrollLoader } from '../hooks/useScrollLoader';
 import { colors } from '../styles/colors';
 import { spacing } from '../styles/spacing';
 
+// navigation es un objeto que React Navigation pasa automáticamente a cada pantalla.
+// useScrollLoader devuelve los dos estados de carga.
 export default function HomeScreen({ navigation }) {
     const { loading, loading1 } = useScrollLoader();
+
 
     if (loading) {
         return (
@@ -23,6 +27,7 @@ export default function HomeScreen({ navigation }) {
 
     return (
         <View style={{ flex: 1, backgroundColor: colors.background }}>
+            {/* ScrollView → permite desplazar el contenido cuando es más largo que la pantalla.   */}
             <ScrollView style={{ backgroundColor: colors.background }} contentContainerStyle={styles.container}>
 
                 <Text style={{ marginTop: 20, backgroundColor: colors.primary, paddingVertical: 15, paddingHorizontal: 25, borderRadius: spacing.borderRadius.card, fontSize: 22, fontWeight: 'bold', color: colors.white, textAlign: 'center', marginHorizontal: 20 }}>
@@ -40,10 +45,14 @@ export default function HomeScreen({ navigation }) {
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: spacing.lg, justifyContent: 'center', marginTop: -50 }}>
                     {productosInicio.map((producto) => (
                         <ProductCard
+                            // key={producto.id} → React necesita un identificador único en cada elemento de una lista
+                            //  para saber cuál actualizar cuando algo cambia.
                             key={producto.id}
                             imagen={producto.imagen}
                             nombre={producto.nombre}
                             precio={producto.precio}
+                            // navigation.navigate('Detail', {...}) → navega a la pantalla Detail y le envía los datos
+                            //  del producto como parámetros. DetailScreen los recibe con route.params.
                             onPress={() => navigation.navigate('Detail', {
                                 nombre: producto.nombre,
                                 precio: producto.precio,
@@ -53,6 +62,8 @@ export default function HomeScreen({ navigation }) {
                     ))}
                 </View>
 
+                {/* Mientras loading1 sea true muestra el indicador. Cuando cambia a false a los 8 segundos,
+                 muestra la segunda tanda de productos. Esto simula la carga diferida (lazy loading). */}
                 {loading1 ? (
                     <View style={{ marginVertical: spacing.md }}>
                         <ActivityIndicator size="large" color={colors.primary} />

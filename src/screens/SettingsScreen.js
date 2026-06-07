@@ -1,5 +1,5 @@
 // SettingsScreen muestra las opciones de configuración de la app.
-
+// Esta pantalla no tiene useState porque no necesita guardar ningún estado. Solo muestra información y botones con alertas.
 import React from 'react';
 import { View, Text, ScrollView, Image, StyleSheet, Alert } from 'react-native';
 import AppButton from '../components/common/AppButton';
@@ -17,18 +17,24 @@ export default function SettingsScreen() {
                     Configuración
                 </Text>
 
+                {/* Tres AppButton cada uno con su propio color y su propio
+                 mensaje de alerta. Cada onPress es una función anónima () => que ejecuta Alert.alert()
+                  con el mensaje correspondiente.  */}
+
                 <Image style={styles.Image} source={icon} />
 
                 {/* Antes Button estaba suelto. Ahora usamos AppButton. */}
                 <View style={styles.Button}>
-                    <AppButton title="Modo oscuro"    color={colors.btnPurple} onPress={() => Alert.alert('¡Alerta! El modo oscuro aún no está disponible.')} />
-                    <AppButton title="Notificaciones" color={colors.btnPink}   onPress={() => Alert.alert('¡Silencio total! Las notificaciones están desactivadas por ahora.')} />
-                    <AppButton title="Idioma"         color={colors.btnBrown}  onPress={() => Alert.alert('Atención: Aquí solo hablamos español.')} />
+                    <AppButton title="Modo oscuro" color={colors.btnPurple} onPress={() => Alert.alert('¡Alerta! El modo oscuro aún no está disponible.')} />
+                    <AppButton title="Notificaciones" color={colors.btnPink} onPress={() => Alert.alert('¡Silencio total! Las notificaciones están desactivadas por ahora.')} />
+                    <AppButton title="Idioma" color={colors.btnBrown} onPress={() => Alert.alert('Atención: Aquí solo hablamos español.')} />
                 </View>
             </ScrollView>
         </View>
     );
 }
+
+
 
 // Mismos estilos que tenías.
 const styles = StyleSheet.create({

@@ -9,6 +9,7 @@ import { colors } from '../styles/colors';
 import { spacing } from '../styles/spacing';
 
 export default function CalculatorScreen() {
+    // extrae cada valor del hook en variables separadas. Es equivalente a:
     const { cantidad, setCantidad, precio, setPrecio, resultado, error, calcular } = useCalculator();
 
     return (
@@ -21,9 +22,9 @@ export default function CalculatorScreen() {
                 <TextInput
                     style={styles.input}
                     placeholder="Cantidad"
-                    value={cantidad}
-                    keyboardType="numeric"
-                    onChangeText={setCantidad}
+                    value={cantidad}  // value={cantidad} → el campo muestra lo que hay en el estado cantidad
+                    keyboardType="numeric" // keyboardType="numeric" → abre el teclado numérico en el celular
+                    onChangeText={setCantidad} // onChangeText={setCantidad} → cada vez que el usuario escribe, actualiza el estado cantidad
                 />
                 <TextInput
                     style={styles.input}
@@ -36,16 +37,20 @@ export default function CalculatorScreen() {
                 {/* Antes era Button dentro de View con width 140.
                     Ahora CalculatorButton ya tiene ese View incluido. */}
                 <View style={styles.buttonGroup}>
-                    <CalculatorButton title="Suma"  color={colors.btnWine}   onPress={() => calcular('suma')} />
+
+                  {/*onPress={() => calcular('suma')} → cuando se presiona, 
+                    llama a calcular con el string 'suma', que el hook procesa en el switch */}  
+                    <CalculatorButton title="Suma" color={colors.btnWine} onPress={() => calcular('suma')} />
                     <CalculatorButton title="Resta" color={colors.btnPurple} onPress={() => calcular('resta')} />
                 </View>
 
                 <View style={styles.buttonGroup}>
-                    <CalculatorButton title="Multiplicar" color={colors.btnPink}  onPress={() => calcular('multiplicar')} />
-                    <CalculatorButton title="Dividir"     color={colors.btnBrown} onPress={() => calcular('dividir')} />
+                    <CalculatorButton title="Multiplicar" color={colors.btnPink} onPress={() => calcular('multiplicar')} />
+                    <CalculatorButton title="Dividir" color={colors.btnBrown} onPress={() => calcular('dividir')} />
                 </View>
 
-                {error          ? <Text style={styles.error}>{error}</Text>                        : null}
+                {/* Renderizado condicional: si error tiene texto, muestra el mensaje. Si no, muestra null (nada). */}
+                {error ? <Text style={styles.error}>{error}</Text> : null}
                 {resultado !== null ? <Text style={styles.result}>Resultado: {resultado}</Text> : null}
             </View>
         </View>

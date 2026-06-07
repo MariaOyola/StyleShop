@@ -1,5 +1,6 @@
 // DetailScreen muestra la información completa del producto seleccionado.
 // Ahora usa AppDropdown en lugar de tener el dropdown definido aquí.
+//  Detalle del producto
 
 import React, { useState } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet, Button, Alert } from 'react-native';
@@ -8,6 +9,9 @@ import { colors } from '../styles/colors';
 import { spacing } from '../styles/spacing';
 
 export default function DetailScreen({ route }) {
+
+// route.params → contiene los datos que envió HomeScreen al navegar.
+//  El || {} evita un error si por alguna razón no llegan parámetros. Los = 'Producto' y = '' son valores por defecto para nombre y precio.
     const { nombre = 'Producto', precio = '', imagen } = route.params || {};
     const [talla, setTalla] = useState('Selecciona una talla');
 

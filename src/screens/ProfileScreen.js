@@ -9,6 +9,9 @@ import { colors } from '../styles/colors';
 import { spacing } from '../styles/spacing';
 
 export default function ProfileScreen() {
+    // modalVisible controla si el modal está abierto o cerrado. 
+    // Empieza en false → cerrado.
+
     const [modalVisible, setModalVisible] = useState(false);
     const icon = require('../../assets/perfil.png');
 
@@ -27,12 +30,20 @@ export default function ProfileScreen() {
 
                 {/* Antes Button estaba suelto. Ahora usamos AppButton. */}
                 <View style={styles.buttons}>
+                    {/*  Cuando se presiona "Editar Perfil", cambia modalVisible a true,
+                     lo que abre el modal. */}
                     <AppButton
                         title="Editar Perfil"
                         color={colors.btnMauve}
                         onPress={() => setModalVisible(true)}
                     />
+
+                    {/* Un View sin contenido que actúa como separador entre los dos botones.
+                     spacing.sm es 10 píxeles de alto. */}
                     <View style={{ height: spacing.sm }} />
+
+                    {/* Un View sin contenido que actúa como separador entre los dos botones.
+                     spacing.sm es 10 píxeles de alto. */}
                     <AppButton
                         title="Cerrar Sesión"
                         color={colors.btnRed}
@@ -41,8 +52,8 @@ export default function ProfileScreen() {
                 </View>
             </ScrollView>
 
-            {/* Antes el Modal estaba definido aquí con todo su JSX.
-                Ahora usamos AppModal y solo le pasamos título y función de cierre. */}
+            {/* visible={modalVisible} → el modal se muestra o se oculta según el estado
+                onClose={() => setModalVisible(false)} → cuando el usuario presiona "Cerrar" dentro del modal, cambia el estado a false y el modal desaparece */}
             <AppModal
                 visible={modalVisible}
                 title="Editar Perfil"
@@ -51,6 +62,15 @@ export default function ProfileScreen() {
         </View>
     );
 }
+
+ {/* Usuario presiona "Editar Perfil"
+  → setModalVisible(true)
+  → AppModal aparece cubriendo la pantalla
+
+Usuario presiona "Cerrar" dentro del modal
+  → onClose se ejecuta
+  → setModalVisible(false)
+  → AppModal desaparece */}
 
 // Mismos estilos que tenías.
 const styles = StyleSheet.create({
