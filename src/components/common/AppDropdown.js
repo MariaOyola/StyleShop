@@ -1,6 +1,7 @@
 // AppDropdown es el selector desplegable estándar de la app.
 // Compatible con iOS y Android sin librerías externas.
 // DetailScreen lo usa para seleccionar tallas.
+// Selector desplegable
 
 import React, { useState } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
@@ -12,19 +13,32 @@ import { spacing } from '../../styles/spacing';
 // onSeleccionar → función que recibe el valor elegido
 // placeholder   → texto cuando no hay selección
 export default function AppDropdown({ opciones, seleccionado, onSeleccionar, placeholder = 'Selecciona una opción' }) {
-    const [abierto, setAbierto] = useState(false);
+    const [abierto, setAbierto] = useState(false); // ESTA CERRADO POR DEFECTO
 
     return (
         <View style={styles.wrapper}>
             {/* Botón que abre/cierra el dropdown */}
             <Pressable style={styles.dropdown} onPress={() => setAbierto(!abierto)}>
                 <Text style={styles.dropdownText}>
+
+                    {/* El texto que muestra el botón */}
+                    {/* ¿seleccionado es diferente al placeholder? */}
+                    {/* SÍ → muestra lo que eligió el usuario  (ej: "M") */}
+                    {/* NO → muestra el placeholder            (ej: "Selecciona una talla") */}
                     {seleccionado !== placeholder ? seleccionado : placeholder}
                 </Text>
             </Pressable>
 
             {/* Lista de opciones — se muestra solo cuando está abierto */}
+            {/*  Si abierto es false, React no renderiza nada. Si es true, muestra la lista. */}
             {abierto && (
+
+                // .map() recorre el array y por cada elemento crea un Pressable. 
+                // Si opciones = ['S', 'M', 'L', 'XL'], crea 4 botones. 
+
+                // Cuando el usuario toca uno hace dos cosas seguidas:
+                // 1. onSeleccionar(opcion) → le avisa a DetailScreen cuál eligió, para que actualice el estado talla
+                // 2. setAbierto(false) → cierra el dropdown
                 <View style={styles.optionsBox}>
                     {opciones.map((opcion) => (
                         <Pressable
@@ -82,3 +96,15 @@ const styles = StyleSheet.create({
         color: colors.black,
     },
 });
+
+// Usuario ve:  [ Selecciona una talla ▾ ]
+
+// Toca el botón
+//→ setAbierto(true)
+//→ aparece la lista: S / M / L / XL
+
+// Toca "M"
+//→ onSeleccionar("M")  → DetailScreen guarda talla = "M"
+//→ setAbierto(false)   → se cierra la lista
+
+// Usuario ve:  [ M ▾ ]

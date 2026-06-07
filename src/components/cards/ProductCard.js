@@ -1,14 +1,19 @@
 // ProductCard es el componente que muestra cada producto en la tienda.
 // Ahora vive en components/cards/ según la arquitectura.
+// — Tarjeta de producto
 
 import React from 'react';
 import { Text, StyleSheet, Image, Pressable } from 'react-native';
 import { colors } from '../../styles/colors';
 import { spacing } from '../../styles/spacing';
 
+// Recibe 4 props. No sabe que existe una tienda, solo sabe mostrar lo que le llega.
 export default function ProductCard({ imagen, nombre, precio, onPress }) {
     return (
+
+// Pressable → es un contenedor táctil. Cuando el usuario toca la tarjeta, ejecuta onPress
         <Pressable onPress={onPress} style={styles.card}>
+{/*source={imagen} → recibe el resultado del require() que viene de products.js y muestra la imagen.*/}
             <Image style={styles.Image} source={imagen} />
             <Text style={styles.productName}>{nombre}</Text>
             <Text style={styles.productPrice}>{precio}</Text>

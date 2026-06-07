@@ -7,14 +7,20 @@ import { View, Image, StyleSheet } from 'react-native';
 import { colors } from '../styles/colors';
 
 export default function SplashScreen({ navigation }) {
+
+    // require() carga la imagen del logo.
     const icon = require('../../assets/Shop.png');
 
+    // useEffect → se ejecuta una vez cuando la pantalla aparece. 
+    // El [] al final es el array de dependencias vacío, que le dice a React
+    // "ejecuta esto solo al montar, no lo repitas".
     useEffect(() => {
         const timer = setTimeout(() => {
             navigation.navigate('MainTab');
-        }, 5000);
+        }, 5000);  // espera 5000 milisegundos (5 segundos) y luego ejecuta y despues va a  la pantalla principal
         // Cancelamos el timer si el usuario sale antes.
-        return () => clearTimeout(timer);
+        return () => clearTimeout(timer); //  si el usuario cierra la app ,
+                                          //  esto cancela el timer para que no intente navegar en una pantalla que ya no existe.
     }, []);
 
     return (
