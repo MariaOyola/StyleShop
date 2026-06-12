@@ -1,3 +1,4 @@
+// Mostrar detalles de productos
 // DetailScreen muestra la información completa del producto seleccionado.
 // Ahora usa AppDropdown en lugar de tener el dropdown definido aquí.
 //  Detalle del producto

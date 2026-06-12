@@ -1,3 +1,4 @@
+// Renderizar botones reutilizables
 // AppButton es el botón estándar de la app.
 // En lugar de repetir color y estilo en cada pantalla,
 // se usa este componente y se le pasa el color que se necesite.

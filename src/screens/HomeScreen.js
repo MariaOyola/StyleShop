@@ -1,3 +1,4 @@
+// Mostrar productos
 // HomeScreen es la pantalla principal de la tienda.
 // Antes se llamaba StyleShop, ahora tiene un nombre más descriptivo.
 // HomeScreen.js — Pantalla principal de la tienda

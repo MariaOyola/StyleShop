@@ -1,3 +1,4 @@
+// Almacenar los datos de productos
 // ProductCard es el componente que muestra cada producto en la tienda.
 // Ahora vive en components/cards/ según la arquitectura.
 // — Tarjeta de producto

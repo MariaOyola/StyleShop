@@ -1,3 +1,4 @@
+// Mostrar visualmente un producto
 // Los productos de la tienda viven aquí, separados de la pantalla.
 // Si se agregan o cambian productos, solo se toca este archivo.
 // ¿Por qué dos listas? → productosInicio carga a los 3 segundos y productosMas a los

@@ -1,3 +1,4 @@
+// Gestionar ventanas modales
 // AppModal es el modal estándar de la app.
 // Cualquier pantalla que necesite un modal usa este componente
 // en lugar de definir su propio Modal desde cero.

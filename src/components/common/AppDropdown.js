@@ -1,3 +1,4 @@
+// Gestionar listas desplegables
 // AppDropdown es el selector desplegable estándar de la app.
 // Compatible con iOS y Android sin librerías externas.
 // DetailScreen lo usa para seleccionar tallas.

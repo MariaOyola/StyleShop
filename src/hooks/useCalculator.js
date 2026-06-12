@@ -1,3 +1,4 @@
+// Gestionar la lógica matemática
 // Toda la lógica de la calculadora vive aquí.
 // CalculatorScreen solo muestra los valores y llama a calcular().
 

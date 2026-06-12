@@ -1,3 +1,4 @@
+// Mostrar configuraciones
 // SettingsScreen muestra las opciones de configuración de la app.
 // Esta pantalla no tiene useState porque no necesita guardar ningún estado. Solo muestra información y botones con alertas.
 import React from 'react';

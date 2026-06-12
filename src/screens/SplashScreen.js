@@ -1,3 +1,5 @@
+
+// Mostrar pantalla de carga
 // SplashScreen es la pantalla de inicio que se muestra 5 segundos
 // y luego navega automáticamente al menú principal.
 // Antes se llamaba LagePage, ahora tiene un nombre más descriptivo.

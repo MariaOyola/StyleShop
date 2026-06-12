@@ -1,3 +1,4 @@
+// Mostrar perfil del usuario
 // ProfileScreen muestra los datos del perfil del usuario.
 // Ahora usa AppModal y AppButton en lugar de definirlos aquí.
 

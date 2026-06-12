@@ -1,6 +1,7 @@
 // Este hook maneja cuándo mostrar o esconder los ActivityIndicator.
 // StyleShop solo le pregunta: ¿ya cargó? y actúa según la respuesta.
 // Hook de carga progresiva
+// Gestionar tiempos de carga
 
 import { useState, useEffect } from 'react';
 
